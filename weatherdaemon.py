@@ -3,48 +3,63 @@ import sys
 import sqlalchemy
 import string
 from xml.dom.minidom import parse
-
-def getConfig():
-	global dbUser, dbPassword, dbName, tabPrefix
-	XMLconf=parse("config.xml")
-	data=XMLconf.getElementsByTagName('dbUser')
-	for e in data:
-		for t in e.childNodes:
-			dbCitiesUser = t.data
-			
-	data=XMLconf.getElementsByTagName('dbPassword')
-	for e in data:
-		for t in e.childNodes:
-			dbCitiesPassword = t.data
 	
-	data=XMLconf.getElementsByTagName('dbName')
-	for e in data:
-		for t in e.childNodes:
-			dbCitiesName = t.data
-	
-	data=XMLconf.getElementsByTagName('tabPrefix')
-	for e in data:
-		for t in e.childNodes:
-			dbWeatherName = t.data
+class Config(object):
+    def __init__(self, ConfigFile):
+        XMLconf=parse("config.xml")
+        data=XMLconf.getElementsByTagName('dbUser')
+        for e in data:
+            for t in e.childNodes:
+                dbUser = t.data
+        data=XMLconf.getElementsByTagName('dbPassword')
+        for e in data:
+            for t in e.childNodes:
+                dbPassword = t.data
+        data=XMLconf.getElementsByTagName('dbName')
+        for e in data:
+            for t in e.childNodes:
+                dbName = t.data
+        data=XMLconf.getElementsByTagName('tabPrefix')
+        for e in data:
+            for t in e.childNodes:
+                dbName = t.data
+        self.dbUser = dbUser
+        self.dbPassword = dbPassword  
+        self.dbName = dbName  
+        self.tabPrefix  = tabPrefix  
+    
 
-def DoQuery(qhost, quser, qpassword, qdb, qsql):
-	
+class City(object):
+    def __init__(self, EnglishName, LocalName, CityCode, ZIPcode, Country):
+        self.EnglishName = EnglishName
+        self.LocalName = LocalName
+        self.CityCode = CityCode
+        self.ZIPcode = ZIPcode
+        self.Country = Country
+    
+    def addCity():
+        self.EnglishName = raw_input("City Name in English: ")
+        self.LocalName = raw_input("City Name in English: ")
+        self.CityCode = CityCode
+        self.ZIPcode = ZIPcode
+        self.Country = Country
 
-def InitialiseDataBase():
+        self.CityCode = raw_input("City weather code: ")
+        self.ZIPcode = raw_input("City ZIP code: ")
+
+
+class Forecast(object):
+    def __init__(self, CityCode, Date):
+        self.Date = Date
+
+        
+        
+
+def install():
 	print("1) MySQL", "2) PgSQL", sep='\n')
 	DBtype = raw_input("Select db type: ")
-	DBserver = raw_input("Database server IP or name")
-	DBport = raw_input("")
-	DBuser = raw_input("")
-	DBpassword = raw_input("")
-	DBname = raw_input("")
-	
-	
-def addCity():
-	ZIPCODE = raw_input("City ZIP code: ")
-	LATINNAME = raw_input("Latin City Name: ")
-	RUSNAME = raw_input("Russian City Name: ")
-	YANDEX = raw_input("Yandex Weather Code: ")
-	GISMETEO = raw_input("Gismeteo Weather Code: ")
-	VKID = raw_input("VK Group: ")
-	
+	DBserver = raw_input("Database server IP or name: ")
+	DBport = raw_input("Database service port: ")
+	DBuser = raw_input("DB username: ")
+	DBpassword = raw_input("DB password: ")
+	DBname = raw_input("Name of DB: ")
