@@ -30,7 +30,7 @@ def getConfig():
 def DoQuery(qhost, quser, qpassword, qdb, qsql):
 	
 	
-def addCity()
+def addCity():
 	ZIPCODE = raw_input("City ZIP code: ")
 	LATINNAME = raw_input("Latin City Name: ")
 	RUSNAME = raw_input("Russian City Name: ")
