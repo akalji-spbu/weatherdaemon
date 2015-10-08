@@ -29,6 +29,16 @@ def getConfig():
 
 def DoQuery(qhost, quser, qpassword, qdb, qsql):
 	
+
+def InitialiseDataBase():
+	print("1) MySQL", "2) PgSQL", sep='\n')
+	DBtype = raw_input("Select db type: ")
+	DBserver = raw_input("Database server IP or name")
+	DBport = raw_input("")
+	DBuser = raw_input("")
+	DBpassword = raw_input("")
+	DBname = raw_input("")
+	
 	
 def addCity():
 	ZIPCODE = raw_input("City ZIP code: ")
@@ -37,3 +47,4 @@ def addCity():
 	YANDEX = raw_input("Yandex Weather Code: ")
 	GISMETEO = raw_input("Gismeteo Weather Code: ")
 	VKID = raw_input("VK Group: ")
+	
