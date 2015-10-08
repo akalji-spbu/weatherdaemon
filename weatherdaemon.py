@@ -7,36 +7,20 @@ from xml.dom.minidom import parse
 def getConfig():
 	global dbCitiesUser, dbCitiesPassword, dbCitiesName, dbWeatherUser, dbWeatherPassword, dbWeatherName, tabPrefix
 	XMLconf=parse("config.xml")
-	data=XMLconf.getElementsByTagName('dbCitiesUser')
+	data=XMLconf.getElementsByTagName('dbUser')
 	for e in data:
 		for t in e.childNodes:
 			dbCitiesUser = t.data
 			
-	data=XMLconf.getElementsByTagName('dbCitiesPassword')
+	data=XMLconf.getElementsByTagName('dbPassword')
 	for e in data:
 		for t in e.childNodes:
 			dbCitiesPassword = t.data
 	
-	data=XMLconf.getElementsByTagName('dbCitiesName')
+	data=XMLconf.getElementsByTagName('dbName')
 	for e in data:
 		for t in e.childNodes:
 			dbCitiesName = t.data
-			
-	XMLconf=parse("security.xml")
-	data=XMLconf.getElementsByTagName('dbWeatherUser')
-	for e in data:
-		for t in e.childNodes:
-			dbWeatherUser = t.data
-			
-	data=XMLconf.getElementsByTagName('dbWeatherPassword')
-	for e in data:
-		for t in e.childNodes:
-			dbWeatherPassword = t.data
-	
-	data=XMLconf.getElementsByTagName('dbWeatherName')
-	for e in data:
-		for t in e.childNodes:
-			dbWeatherName = t.data
 	
 	data=XMLconf.getElementsByTagName('tabPrefix')
 	for e in data:
