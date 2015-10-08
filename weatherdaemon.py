@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 import sys
-import MySQLdb
+import sqlalchemy
 import string
 from xml.dom.minidom import parse
 
@@ -17,7 +17,7 @@ def getConfig():
 		for t in e.childNodes:
 			dbCitiesPassword = t.data
 	
-	data=XMLconf.getElementsByTagName('dbName')
+	data=XMLconf.getElementsByTagName('dbCitiesName')
 	for e in data:
 		for t in e.childNodes:
 			dbCitiesName = t.data
@@ -28,15 +28,7 @@ def getConfig():
 			dbWeatherName = t.data
 
 def DoQuery(qhost, quser, qpassword, qdb, qsql):
-	db = MySQLdb.connect(host=qhost, user=quser, passwd=qpassword, db=qdb, use_unicode = 1, charset='utf8')
-	db.set_character_set('utf8')
-	Cursor=db.cursor()
-	Cursor.execute('SET NAMES utf8')
-	Cursor.execute('SET CHARACTER SET utf8')
-	Cursor.execute('SET character_set_connection=utf8')
-	Cursor.execute(qsql)
-	dbCities.commit()
-	dbCities.close()
+	
 	
 def addCity()
 	ZIPCODE = raw_input("City ZIP code: ")
