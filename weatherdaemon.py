@@ -2,9 +2,10 @@
 import sys
 import sqlalchemy
 import string
+import config
 from xml.dom.minidom import parse
 	
-class Config(object):
+class Config():
     def __init__(self, ConfigFile):
         XMLconf=parse("config.xml")
         data=XMLconf.getElementsByTagName('dbUser')
@@ -23,13 +24,19 @@ class Config(object):
         for e in data:
             for t in e.childNodes:
                 dbName = t.data
+        data=XMLconf.getElementsByTagName('dbServer')
+        for e in data:
+            for t in e.childNodes:
+                dbServer = t.data
+        
+        self.dbServer = dbServer
         self.dbUser = dbUser
         self.dbPassword = dbPassword  
         self.dbName = dbName  
         self.tabPrefix  = tabPrefix  
     
 
-class City(object):
+class City():
     def __init__(self, EnglishName, LocalName, CityCode, ZIPcode, Country):
         self.EnglishName = EnglishName
         self.LocalName = LocalName
@@ -43,9 +50,13 @@ class City(object):
         self.CityCode = raw_input("City weather code: ")
         self.ZIPcode = raw_input("City ZIP code: ")
         self.Country = raw_input("Country: ")
+        
+    def saveCityToDB():
+        SQLALCHEMY_DATABASE_URI = 'mysql://' +config.dbUser+ ':' +config.dbPassword+ '@'+ config.dbServer +'/'+ config.dbName
+        
 
 
-class Forecast(object):
+class Forecast():
     def __init__(self, CityCode, Date):
         self.Date = Date
 def CreateWeatherPicture():
@@ -59,3 +70,6 @@ def install():
 	DBuser = raw_input("DB username: ")
 	DBpassword = raw_input("DB password: ")
 	DBname = raw_input("Name of DB: ")
+    
+global CurrentConfig
+CurrentConfig = Config()
