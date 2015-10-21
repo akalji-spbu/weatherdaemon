@@ -37,23 +37,19 @@ class City(object):
         self.ZIPcode = ZIPcode
         self.Country = Country
     
-    def addCity():
+    def createCity():
         self.EnglishName = raw_input("City Name in English: ")
         self.LocalName = raw_input("City Name in English: ")
-        self.CityCode = CityCode
-        self.ZIPcode = ZIPcode
-        self.Country = Country
-
         self.CityCode = raw_input("City weather code: ")
         self.ZIPcode = raw_input("City ZIP code: ")
+        self.Country = raw_input("Country: ")
 
 
 class Forecast(object):
     def __init__(self, CityCode, Date):
         self.Date = Date
-
-        
-        
+def CreateWeatherPicture():
+    return CreateWeatherPicture
 
 def install():
 	print("1) MySQL", "2) PgSQL", sep='\n')
