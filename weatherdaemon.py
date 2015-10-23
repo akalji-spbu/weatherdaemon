@@ -4,38 +4,7 @@ import sqlalchemy
 import string
 import config
 from xml.dom.minidom import parse
-	
-class Config():
-    def __init__(self, ConfigFile):
-        XMLconf=parse("config.xml")
-        data=XMLconf.getElementsByTagName('dbUser')
-        for e in data:
-            for t in e.childNodes:
-                dbUser = t.data
-        data=XMLconf.getElementsByTagName('dbPassword')
-        for e in data:
-            for t in e.childNodes:
-                dbPassword = t.data
-        data=XMLconf.getElementsByTagName('dbName')
-        for e in data:
-            for t in e.childNodes:
-                dbName = t.data
-        data=XMLconf.getElementsByTagName('tabPrefix')
-        for e in data:
-            for t in e.childNodes:
-                dbName = t.data
-        data=XMLconf.getElementsByTagName('dbServer')
-        for e in data:
-            for t in e.childNodes:
-                dbServer = t.data
-        
-        self.dbServer = dbServer
-        self.dbUser = dbUser
-        self.dbPassword = dbPassword  
-        self.dbName = dbName  
-        self.tabPrefix  = tabPrefix  
-    
-
+ 
 class City():
     def __init__(self, EnglishName, LocalName, CityCode, ZIPcode, Country):
         self.EnglishName = EnglishName
@@ -52,7 +21,8 @@ class City():
         self.Country = raw_input("Country: ")
         
     def saveCityToDB():
-        SQLALCHEMY_DATABASE_URI = 'mysql://' +config.dbUser+ ':' +config.dbPassword+ '@'+ config.dbServer +'/'+ config.dbName
+        print ("Hello")
+        
         
 
 
