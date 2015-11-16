@@ -393,10 +393,10 @@ def PostToVK(Image, VKID):
 def Logger():   #ассинхронная функция
     print("LoggingIsStarted")
 
-def GenerateImage(Forecast)
+def GenerateImage(Forecast):
     return Base64(Image)
 
-def GetCoordinates()
+def GetCoordinates():
     return latitude, longitude
 
 def clrscr():
