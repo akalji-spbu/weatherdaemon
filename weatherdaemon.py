@@ -25,7 +25,7 @@ class Config:
             Configure = configparser.ConfigParser()
             Configure.read(ConfigFile)
             self.DBengine   = Configure["DB"]["DBengine"]
-	        self.DBserver   = Configure["DB"]["DBserver"]
+            self.DBserver   = Configure["DB"]["DBserver"]
 	        self.DBport     = Configure["DB"]["DBport"]
 	        self.DBuser     = Configure["DB"]["DBuser"]
 	        self.DBpassword = Configure["DB"]["DBpassword"]
