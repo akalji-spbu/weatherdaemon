@@ -26,7 +26,7 @@ class Config:
             Configure.read(ConfigFile)
             self.DBengine   = Configure["DB"]["DBengine"]
             self.DBserver   = Configure["DB"]["DBserver"]
-	        self.DBport     = Configure["DB"]["DBport"]
+            self.DBport     = Configure["DB"]["DBport"]
 	        self.DBuser     = Configure["DB"]["DBuser"]
 	        self.DBpassword = Configure["DB"]["DBpassword"]
 	        self.DBname     = Configure["DB"]["DBname"]
