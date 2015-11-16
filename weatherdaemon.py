@@ -387,7 +387,7 @@ def ExportToXML(Query, TableTuple, File):
 def Timestamp():
     timestamp = 0
     return timestamp
-def PostToVK(Image, VKID)
+def PostToVK(Image, VKID):
     print("exportDone")
 
 def Logger():   #ассинхронная функция
