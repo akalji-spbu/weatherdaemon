@@ -27,9 +27,9 @@ class Config:
             self.DBengine   = Configure["DB"]["DBengine"]
             self.DBserver   = Configure["DB"]["DBserver"]
             self.DBport     = Configure["DB"]["DBport"]
-	        self.DBuser     = Configure["DB"]["DBuser"]
-	        self.DBpassword = Configure["DB"]["DBpassword"]
-	        self.DBname     = Configure["DB"]["DBname"]
+            self.DBuser     = Configure["DB"]["DBuser"]
+            self.DBpassword = Configure["DB"]["DBpassword"]
+            self.DBname     = Configure["DB"]["DBname"]
             
             
 class City(Base):
