@@ -7,6 +7,7 @@ from xml.dom.minidom import parse
 from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey, create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+Base = declarative_base()
 
 #begin core classes
 class Config:
