@@ -2,6 +2,16 @@
 import weatherdaemon
 import os
 global mainarg
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+config=weatherdaemon.config("config.ini")
+
+#Creating database session
+SQLALCHEMY_DATABASE_URI = config.DBengine + config.DBuser + ':' + config.DBpassword + '@' + config.DBserver + '/'+ config.DBname
+engine = create_engine(SQLALCHEMY_DATABASE_URI)
+Session = sessionmaker(bind=engine)
+session = Session()
+#/Creating database session
 
 def clrscr():
     try:
@@ -181,8 +191,16 @@ def AboutT():
 def AddCity():
     clrscr()
     City = weatherdaemon.City()
+    clrscr()
+    print("You input this city")
     print(City)
-    print("AddCity")
+    confirm = input("Do you want to add this city to db? y/n:")
+    if confirm == "y":
+        session.add(City)
+    else:
+        input("City not added.")
+        AddCity()
+
     
 def EditCity():
     print("EditCity")
@@ -243,3 +261,5 @@ def FullBackUP():
     
 
 MainMenu()
+
+session.commit()   #end session
