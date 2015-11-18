@@ -10,6 +10,7 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 #begin core classes
+
 class Config:
     def __init__(self, ConfigFile):
         try:
@@ -206,6 +207,12 @@ class Forecast(Base):
     def __repr__(self):
         return "<Forecast(Timestamp='%s', CityCode='%s', Cloudiness='%s', Precipitation='%s', Rpower='%s', Spower='%s', Pressure='%s', Tempirature='%s', WindMin='%s', WindMax='%s', WindDirection='%s', Relwet='%s', Heat='%s', Sunrise='%s', Sunset='%s', Moonrise='%s', Moonset='%s', Moonphase='%s')>" % (self.Timestamp, self.CityCode, self.Cloudiness, self.Precipitation, self.Rpower, self.Spower, self.Pressure, self.Tempirature, self.WindMin, self.WindMax, self.WindDirection, self.Relwet, self.Heat, self.Sunrise, self.Sunset, self.Moonrise, self.Moonset, self.Moonphase)
 
+def clrscr():
+    try:
+        os.system('clear')
+    except:
+        os.system('cls')
+        
 def setup():
     ConfigFile = "config.ini"
     try:
@@ -265,8 +272,7 @@ def setup():
 def initDB():
     print("Initialising DB in progress....")
     config = Config("config.ini")
-    SQLALCHEMY_DATABASE_URI = DBengine + DBuser + ':' + DBpassword + '@' + DBserver + '/'+ DBname
-    Base = declarative_base()
+    SQLALCHEMY_DATABASE_URI = config.DBengine + config.DBuser + ':' + config.DBpassword + '@' + config.DBserver + '/'+ config.DBname
     engine = create_engine(SQLALCHEMY_DATABASE_URI)
     
     
@@ -399,9 +405,3 @@ def GenerateImage(Forecast):
 
 def GetCoordinates():
     return latitude, longitude
-
-def clrscr():
-    try:
-        os.system('clear')
-    except:
-        os.system('cls')

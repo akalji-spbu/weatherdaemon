@@ -4,7 +4,7 @@ import os
 global mainarg
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-config=weatherdaemon.config("config.ini")
+config=weatherdaemon.Config("config.ini")
 
 #Creating database session
 SQLALCHEMY_DATABASE_URI = config.DBengine + config.DBuser + ':' + config.DBpassword + '@' + config.DBserver + '/'+ config.DBname
