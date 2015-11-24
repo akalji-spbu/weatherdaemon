@@ -7,7 +7,7 @@ from sqlalchemy.orm import sessionmaker
 config=weatherdaemon.Config("config.ini")
 
 #Creating database session
-SQLALCHEMY_DATABASE_URI = config.DBengine + config.DBuser + ':' + config.DBpassword + '@' + config.DBserver + '/'+ config.DBname
+SQLALCHEMY_DATABASE_URI = config.DBengine+"://" + config.DBuser + ':' + config.DBpassword + '@' + config.DBserver + '/'+ config.DBname
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
 Session = sessionmaker(bind=engine)
 session = Session()
