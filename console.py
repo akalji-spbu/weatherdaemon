@@ -24,7 +24,7 @@ def MainMenu():
     arg=-1
     print("\t       WeatherDaemon main console        ")   
     print("\t#########################################")
-    print("\t#       1) Cities                       #")
+    print("\t#       1) Citiess                       #")
     print("\t#       2) Regions                      #")
     print("\t#       3) Countries                    #")
     print("\t#       4) VK groups                    #")
